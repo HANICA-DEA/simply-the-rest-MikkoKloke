@@ -21,6 +21,16 @@ public class ItemsResource {
         this.itemService = new ItemService();
     }
 
+    @DELETE
+    @Path("/delete/{itemId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteItem(@PathParam("itemId") int id) {
+        itemService.deleteItem(id);
+        return Response
+                .status(Response.Status.OK)
+                .build();
+    }
+
 
     @POST
     @Path("/")
